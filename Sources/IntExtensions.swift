@@ -9,6 +9,27 @@
 import Foundation
 
 #if swift(>=3.2)
+    public enum ArithmeticOverflow {
+
+        public init(_ overflow: Bool) {
+            self = overflow ? .overflow : .none
+        }
+
+        case none
+        case overflow
+    }
+
+    extension Int {
+        func multipliedReportingOverflow(other: Int) -> (partialValue: Int, overflow: ArithmeticOverflow) {
+            let (value, overflow) = self.multipliedReportingOverflow(by: other)
+            return (value, ArithmeticOverflow(overflow))
+        }
+
+        func addingReportingOverflow(other: Int) -> (partialValue: Int, overflow: ArithmeticOverflow) {
+            let (exponent, overflow) = Int.addWithOverflow(self, other)
+            return (exponent, ArithmeticOverflow(overflow))
+        }
+    }
 #else
 
 public enum ArithmeticOverflow {
@@ -23,12 +44,12 @@ public enum ArithmeticOverflow {
 
 extension Int {
 
-  func multipliedReportingOverflow(by other: Int) -> (partialValue: Int, overflow: ArithmeticOverflow) {
+  func multipliedReportingOverflow(other: Int) -> (partialValue: Int, overflow: ArithmeticOverflow) {
     let (exponent, overflow) = Int.multiplyWithOverflow(self, other)
     return (exponent, ArithmeticOverflow(overflow))
   }
 
-  func addingReportingOverflow(_ other: Int) -> (partialValue: Int, overflow: ArithmeticOverflow) {
+  func addingReportingOverflow(other: Int) -> (partialValue: Int, overflow: ArithmeticOverflow) {
     let (exponent, overflow) = Int.addWithOverflow(self, other)
     return (exponent, ArithmeticOverflow(overflow))
   }
