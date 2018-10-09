@@ -26,7 +26,7 @@ import Foundation
         }
 
         func addingReportingOverflow(other: Int) -> (partialValue: Int, overflow: ArithmeticOverflow) {
-            let (exponent, overflow) = Int.addWithOverflow(self, other)
+            let (exponent, overflow) = self.addingReportingOverflow(other)
             return (exponent, ArithmeticOverflow(overflow))
         }
     }
