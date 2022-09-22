@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Freddy"
-  s.version      = "3.0.2"
+  s.version      = "3.0.3"
   s.summary      = "A JSON parsing library written in Swift"
 
   s.description  = <<-DESC
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
                     "John Gallagher" => "jgallagher@bignerdranch.com",
                     "Zachary Waldowski" => "zachary@bignerdranch.com" }
 
-  s.ios.deployment_target     = "8.0"
+  s.ios.deployment_target     = "11.0"
   s.osx.deployment_target     = "10.10"
   s.watchos.deployment_target = "2.0"
   s.tvos.deployment_target    = "9.0"
@@ -28,5 +28,5 @@ Pod::Spec.new do |s|
   s.source_files  = "Sources/**/*.{h,swift}"
 
   s.requires_arc = true
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.0' }
 end
